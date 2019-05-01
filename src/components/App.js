@@ -1,7 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import { Nav, NavItems } from "./Nav";
+import { Nav } from "./Nav";
+import { Hero } from "./Hero";
 import { Button } from "./Button";
+import { Image } from "./Image";
+import { GlobalStyle } from "../theme/globalStyles";
+import { PageBreak } from "./PageBreak";
+import { ChangePic } from "./ChangePic";
+
 //import HeroText from "./HeroText";
 
 export const Container = styled.section`
@@ -14,18 +20,14 @@ export const Container = styled.section`
 export const App = props => {
   console.log(props);
   return (
-    <Container>
-      <Nav>
-        {" "}
-        <span>You've been gifed 20% off your first purchase</span>{" "}
-        <NavItems>
-          <h3>FAQ</h3>
-          <h3>LOG IN</h3>
-          <Button width={"147px"} scrolled={true}>
-            discount button
-          </Button>
-        </NavItems>
-      </Nav>
-    </Container>
+    <>
+      <GlobalStyle />
+      <Container>
+        <Nav />
+        <Hero />
+        <PageBreak />
+        <ChangePic />
+      </Container>
+    </>
   );
 };
