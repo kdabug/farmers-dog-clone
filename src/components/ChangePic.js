@@ -28,7 +28,7 @@ export const ChangePic = props => {
 
 export const SectionContainer = styled.section`
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   height: 554px;
   width: 100%;
@@ -42,14 +42,20 @@ export const SectionContainer = styled.section`
 export const Info = styled.div`
   display: flex;
   flex-direction: column;
-  width: 614px;
+  width: 600px;
   justify-content: space-between;
   align-items: center;
+  padding: 0 30px;
   h1 {
+    margin: 20px;
     font-size: 32px;
+    font-weight: 800;
+    line-height: 1.3;
   }
   h3 {
     margin: 20px;
     font-size: 16px;
+    font-weight: 200;
+    line-height: 1.8;
   }
 `;

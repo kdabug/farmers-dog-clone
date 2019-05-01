@@ -2,7 +2,7 @@ export const theme = {
   grey: "#4B4F54",
   white: "#ffffff",
   salmon: "#ff8d6a",
-  lightgrey: "#fafafa",
+  lightgrey: "#F4F5F7",
   primaryFont: "Muli"
 };
 

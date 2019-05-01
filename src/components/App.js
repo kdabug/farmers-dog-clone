@@ -7,6 +7,10 @@ import { Image } from "./Image";
 import { GlobalStyle } from "../theme/globalStyles";
 import { PageBreak } from "./PageBreak";
 import { ChangePic } from "./ChangePic";
+import { Rethink } from "./Rethink";
+import { Better } from "./Better";
+import { Quotes } from "./Quotes";
+import { Cards } from "./Cards";
 
 //import HeroText from "./HeroText";
 
@@ -27,6 +31,10 @@ export const App = props => {
         <Hero />
         <PageBreak />
         <ChangePic />
+        <Rethink />
+        <Better />
+        <Cards />
+        <Quotes />
       </Container>
     </>
   );
