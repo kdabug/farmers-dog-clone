@@ -1,3 +1,9 @@
+**THIS PROJECT IS A CLONE**
+
+The project is a CLONE of the front/home page of "The Farmer's Dog" website.
+url of clone: clone-farmers-dog-mills.surge.sh
+url of actual site: https://thefarmersdog.com/
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
