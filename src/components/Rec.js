@@ -18,7 +18,7 @@ export const Rec = props => {
             Get fresh food conveniently delivered with our personalized meal
             plans
           </h3>
-          <Button width={"147px"} scrolled={false}>
+          <Button width={"147px"} scrolled={true}>
             <p>Get Started</p>
           </Button>
         </div>
@@ -37,6 +37,7 @@ export const SectionContainer = styled.section`
   justify-content: center;
   align-items: center;
   width: 100%;
+  height: 650px;
   color: ${props => props.theme.grey};
   background-color: ${props => props.theme.lightgrey};
   padding: 80px 0;

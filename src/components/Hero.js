@@ -10,7 +10,6 @@ export const Hero = props => {
   return (
     <>
       <HeroContainer>
-        {" "}
         <Image height={"140px"} width={"140px"} src={Logo} />
         <HeroText>
           <h1>
@@ -41,12 +40,12 @@ export const HeroContainer = styled.section`
   font-weight: 800;
   justify-content: center;
   align-items: center;
-  height: 92vh;
+  height: 100vh;
   width: 100vw;
   color: ${props => props.theme.white};
   margin: 0;
   padding: 0;
-  z-index: -1;
+  ${"" /* z-index: -1; */}
   img {
     margin-top: -30px;
   }

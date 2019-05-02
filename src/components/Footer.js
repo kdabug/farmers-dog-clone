@@ -34,13 +34,11 @@ export const Footer = props => {
             OUR FOOD IS MADE WHILE PLAYING DOO-WOP TUNES, ALL WITH ❤ IN THE US{" "}
           </h2>
         </div>
-        <div>
-          <div>
-            © 2019 The Farmer’s Dog, Inc.Better for them, easier for you ™
-          </div>
-          <div>
+        <div className="bottom-container">
+          <>© 2019 The Farmer’s Dog, Inc.Better for them, easier for you ™</>
+          <>
             <h2>Privacy</h2> <h2>Terms</h2>
-          </div>
+          </>
         </div>
       </SectionContainer>
     </>
@@ -49,34 +47,45 @@ export const Footer = props => {
 
 export const SectionContainer = styled.section`
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  height: 500px;
+  height: 250px;
+  position: absolute;
   width: 100%;
-
   color: ${props => props.theme.white};
   background-color: ${props => props.theme.grey};
   font-weight: 800;
   margin: 0;
   padding: 0;
-  z-index: 20;
+
   span {
     display: flex;
     align-items: center;
+  }
+  .image-container {
+    display: flex;
+    flex-direction: row;
   }
   .footer-container {
     display: flex;
     flex-direction: row;
   }
+  .bottom-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: black;
+    color: white;
+    height: 60px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+  }
 `;
 
 export const FooterItems = styled.div`
   display: flex;
-  width: auto;
-  justify-content: space-between;
-  align-items: center;
-
-  h3 {
-    margin: 20px;
-  }
+  flex-direction: column;
 `;
