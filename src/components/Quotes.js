@@ -16,12 +16,16 @@ class Quotes extends Component {
     this.handleSelect = this.handleSelect.bind(this);
   }
 
-  handleVet() {
+  handleVet(e) {
     const els = document.getElementsByClassName("active");
     if (els.length) {
-      console.log("this is els", els);
       els[0].classList.remove("active");
     }
+    const unEls = document.getElementsByClassName("switch");
+    if (unEls.length) {
+      unEls[0].classList.remove("switch");
+    }
+    e.target.classList.toggle("switch");
     this.setState((prevState, nextState) => ({
       vets: !prevState.vets,
       selected: 0
@@ -48,10 +52,10 @@ class Quotes extends Component {
         <SectionContainer>
           <h1>The Power of Real Food</h1>
           <div className="switch-container">
-            <Switcher onClick={this.handleVet}>
+            <Switcher onClick={e => this.handleVet(e)}>
               <h2>VETS</h2>
             </Switcher>
-            <Switcher onClick={this.handleVet}>
+            <Switcher onClick={e => this.handleVet(e)}>
               <h2>DOGS</h2>
             </Switcher>
           </div>
