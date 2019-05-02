@@ -2,90 +2,193 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { Button } from "./Button";
 import { Image } from "./Image";
-import { Cards } from "./Cards";
-import Bag from "../assets/package-turkey-27a9e3.png";
 import Couch from "../assets/dog-sitting-3ef6b6.jpg";
-import { tsConstructorType } from "@babel/types";
 import { dogInfo, vetInfo } from "../assets/testimonials";
 
-export const Quotes = props => {
-  return (
-    <>
-      <SectionContainer>
-        <Info>
-          <div className="pop">
-            <h1>See Your Dog’s Recommended Plan</h1>
-            <h3>
-              Get fresh food conveniently delivered with our personalized meal
-              plans
-            </h3>
-            <Button width={"147px"} scrolled={false}>
-              <p>Get Started</p>
-            </Button>
+class Quotes extends Component {
+  constructor() {
+    super();
+    this.state = {
+      vets: true,
+      selected: 0
+    };
+    this.handleVet = this.handleVet.bind(this);
+    this.handleSelect = this.handleSelect.bind(this);
+  }
+
+  handleVet() {
+    const els = document.getElementsByClassName("active");
+    if (els.length) {
+      console.log("this is els", els);
+      els[0].classList.remove("active");
+    }
+    this.setState((prevState, nextState) => ({
+      vets: !prevState.vets,
+      selected: 0
+    }));
+  }
+
+  handleSelect(e, num) {
+    e.preventDefault();
+    const els = document.getElementsByClassName("active");
+    if (els.length) {
+      console.log("this is els", els);
+      els[0].classList.remove("active");
+    }
+    e.target.classList.toggle("active");
+    this.setState((prevState, newState) => ({
+      selected: num
+    }));
+  }
+
+  render() {
+    console.log(vetInfo);
+    return (
+      <>
+        <SectionContainer>
+          <h1>The Power of Real Food</h1>
+          <div className="switch-container">
+            <Switcher onClick={this.handleVet}>
+              <h2>VETS</h2>
+            </Switcher>
+            <Switcher onClick={this.handleVet}>
+              <h2>DOGS</h2>
+            </Switcher>
           </div>
-        </Info>
-      </SectionContainer>
-    </>
-  );
-};
+          <div className="testimony-info">
+            {vetInfo && (
+              <>
+                {this.state.vets ? (
+                  <>
+                    {vetInfo.map((vet, i) => {
+                      return (
+                        <>
+                          {i === this.state.selected && (
+                            <div className="testimony">
+                              <h2>"{vet.testimony}"</h2>
+                              <h3> {vet.name}</h3>
+                            </div>
+                          )}
+                        </>
+                      );
+                    })}
+                  </>
+                ) : (
+                  <>
+                    {dogInfo.map((dog, i) => {
+                      return (
+                        <>
+                          {i === this.state.selected && (
+                            <div className="testimony">
+                              <h2>"{dog.testimony}"</h2>
+                              <h3> {dog.name}</h3>
+                            </div>
+                          )}
+                        </>
+                      );
+                    })}
+                  </>
+                )}
+                {this.state.vets ? (
+                  <div className="pics">
+                    {vetInfo.map((vet, i) => {
+                      return (
+                        <Image
+                          onClick={e => this.handleSelect(e, i)}
+                          height={"100px"}
+                          width={"100px"}
+                          src={vet.photo}
+                        />
+                      );
+                    })}
+                  </div>
+                ) : (
+                  <div className="pics">
+                    {dogInfo.map((dog, i) => {
+                      return (
+                        <Image
+                          onClick={e => this.handleSelect(e, i)}
+                          height={"100px"}
+                          width={"100px"}
+                          src={dog.photo}
+                        />
+                      );
+                    })}
+                  </div>
+                )}
+              </>
+            )}
+          </div>
+        </SectionContainer>
+      </>
+    );
+  }
+}
+export { Quotes };
 
 export const SectionContainer = styled.section`
-  background-image: url(${Couch});
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
   width: 100%;
+  height: 500px;
   color: ${props => props.theme.grey};
   background-color: ${props => props.theme.lightgrey};
   font-weight: 800;
   padding: 80px 0;
-
+  .pics {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .switch-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .testimony {
+    width: 70%;
+    margin: 0 auto;
+  }
+  img {
+    display: inline;
+    filter: grayscale(1);
+    border-radius: 50%;
+  }
+  .active {
+    filter: grayscale(0);
+  }
   h1 {
     font-size: 38px;
-    font-weight: 800;
+    font-weight: 900;
     padding-bottom: 30px;
   }
-`;
-
-export const Info = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 600px;
-  justify-content: center;
-  align-items: center;
-  padding: 0 30px;
-  div {
-    display: flex;
-    flex-direction: column;
-  }
-  h1 {
-    font-size: 24px;
-    font-weight: 800;
-    line-height: 1.3;
-    padding-bottom: 0;
+  h2 {
+    font-size: 20px;
+    font-weight: 200;
+    padding-bottom: 30px;
+    line-height: 1.5;
   }
   h3 {
     font-size: 16px;
-    font-weight: 200;
-    line-height: 1.8;
-    margin: 20px 0;
-  }
-  .pop {
-    display: flex;
-    background-color: white;
-    z-index: 1;
+    padding-bottom: 30px;
+    color: #969799
+    font-family: 'Spectral', serif;
   }
 `;
 
-export const Card = styled.div`
+export const Switcher = styled.div`
   width: 20vw;
   justify-content: center;
   align-items: center;
   padding: 0 30px;
   margin: 0;
   display: inline;
+  .switch {
+    border-bottom: 3px solid ${props => props.theme.salmon};
+  }
 `;

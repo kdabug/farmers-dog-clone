@@ -9,8 +9,9 @@ import { PageBreak } from "./PageBreak";
 import { ChangePic } from "./ChangePic";
 import { Rethink } from "./Rethink";
 import { Better } from "./Better";
+import { Rec } from "./Rec";
 import { Quotes } from "./Quotes";
-import { Cards } from "./Cards";
+import { Footer } from "./Footer";
 
 //import HeroText from "./HeroText";
 
@@ -33,8 +34,9 @@ export const App = props => {
         <ChangePic />
         <Rethink />
         <Better />
-        <Cards />
         <Quotes />
+        <Rec />
+        <Footer />
       </Container>
     </>
   );

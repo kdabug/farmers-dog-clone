@@ -6,9 +6,11 @@ import Present from "../assets/present-fill-white-712ea7.png";
 
 export const Nav = props => {
   console.log(props);
+  const scrolled = !window.pageYOffset == 0;
+  console.log("scrolled", scrolled);
   return (
     <>
-      <NavContainer>
+      <NavContainer scrolled={window.pageYOffset == 0}>
         {" "}
         <span>
           <Image height={"40px"} width={"40px"} src={Present} />
@@ -17,7 +19,7 @@ export const Nav = props => {
         <NavItems>
           <h3>FAQ</h3>
           <h3>LOG IN</h3>
-          <Button width={"147px"} scrolled={true}>
+          <Button width={"147px"} scrolled={window.pageYOffset == 0}>
             <p>USE YOUR DISCOUNT NOW</p>
           </Button>
         </NavItems>
@@ -32,12 +34,14 @@ export const NavContainer = styled.section`
   align-items: center;
   height: 64px;
   width: 100%;
-  color: ${props => props.theme.white};
-  background-color: ${props => props.theme.salmon};
+  position: fixed;
+  color: ${props => (props.scrolled ? props.theme.white : props.theme.grey)};
+  background-color: ${props =>
+    props.scrolled ? props.theme.salmon : props.theme.white};
   font-weight: 800;
   margin: 0;
   padding: 0;
-
+  z-index: 20;
   span {
     display: flex;
     align-items: center;
